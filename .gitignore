@@ -7,3 +7,4 @@ frontend/dist/
 certs/
 *.sqlite3
 .DS_Store
+*.tsbuildinfo
