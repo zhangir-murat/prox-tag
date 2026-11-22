@@ -220,7 +220,8 @@ def _pack5_padded(syms: list[int], nbytes: int) -> bytes:
     return acc.to_bytes(nbytes, "big")
 
 
-def mstag_decode_cells(cells: list[int], erasure_cells: list[int] | None = None) -> DecodeResult:
+def mstag_decode_cells(cells: list[int], erasure_cells: list[int] | None = None,
+                       max_budget: int | None = None) -> DecodeResult:
     if len(cells) != N_CELLS:
         raise ValueError("need 50 cells")
     whitened = cells_to_bytes_lsb(cells[:N_DATA_CELLS])
@@ -247,6 +248,9 @@ def mstag_decode_cells(cells: list[int], erasure_cells: list[int] | None = None)
                "parity_pad_bits": pad_bits}
     if not res.ok:
         return DecodeResult(False, "mstag", reason=f"Reed-Solomon GF(32) failed: {res.reason}", details=details)
+    budget = 2 * len(res.error_positions) + len(res.erasure_positions)
+    if max_budget is not None and budget > max_budget:
+        return DecodeResult(False, "mstag", reason=f"correction budget 2e+s={budget} exceeds acceptance limit {max_budget}", details=details)
     fixed = res.codeword
     raw8c, last_pad = symbols5_to_bytes(fixed[4:], 8)
     if last_pad != 0:
@@ -307,7 +311,7 @@ def exp1_encode(prefix: int, code: int) -> EncodeResult:
 
 
 def exp1_decode_cells(cells: list[int], erasure_cells: list[int] | None = None,
-                      max_errors: int = EXP1_MAX_ERRORS) -> DecodeResult:
+                      max_errors: int = EXP1_MAX_ERRORS, max_budget: int | None = None) -> DecodeResult:
     whitened = cells_to_bytes_msb(cells[:N_DATA_CELLS])
     tx = _xor(whitened, EXP1_XOR)
     cw = list(reversed(tx))  # lowest degree first
@@ -317,6 +321,9 @@ def exp1_decode_cells(cells: list[int], erasure_cells: list[int] | None = None,
         return DecodeResult(False, "exp1", reason=f"Reed-Solomon GF(256) failed: {res.reason}")
     if len(res.error_positions) > max_errors:
         return DecodeResult(False, "exp1", reason=f"{len(res.error_positions)} errors exceeds acceptance limit {max_errors}")
+    budget = 2 * len(res.error_positions) + len(res.erasure_positions)
+    if max_budget is not None and budget > max_budget:
+        return DecodeResult(False, "exp1", reason=f"correction budget 2e+s={budget} exceeds acceptance limit {max_budget}")
     fixed = bytes(reversed(res.codeword))
     prefix, code = struct.unpack(">BI", fixed[:5])
     return DecodeResult(True, "exp1", prefix, code, checksum_ok=True,
@@ -342,8 +349,15 @@ def detect_mode(cells: list[int]) -> str | None:
     return None
 
 
+# Assisted decoding (erasures / Chase trials) must leave unused redundancy, otherwise
+# garbage input "decodes" to an arbitrary codeword. Hard-decision decoding uses the
+# full bounded-distance radius (mstag is additionally guarded by CRC16).
+ASSISTED_BUDGET = {"mstag": 4, "exp1": 4}
+
+
 def decode_cells(cells: list[int], erasure_cells: list[int] | None = None,
-                 modes: tuple[str, ...] = MODES, require_trailer: bool = True) -> DecodeResult:
+                 modes: tuple[str, ...] = MODES, require_trailer: bool = True,
+                 assisted: bool = False) -> DecodeResult:
     """Decode 50 cells. The filler cells select the mode; trailer cells are checked."""
     if len(cells) != N_CELLS:
         raise ValueError("need 50 cells")
@@ -352,6 +366,7 @@ def decode_cells(cells: list[int], erasure_cells: list[int] | None = None,
     mode = detect_mode(cells)
     if mode is None or mode not in modes:
         return DecodeResult(False, reason=f"filler cells {cells[44:46]} match no enabled mode")
+    budget = ASSISTED_BUDGET[mode] if (assisted or erasure_cells) else None
     if mode == "mstag":
-        return mstag_decode_cells(cells, erasure_cells)
-    return exp1_decode_cells(cells, erasure_cells)
+        return mstag_decode_cells(cells, erasure_cells, max_budget=budget)
+    return exp1_decode_cells(cells, erasure_cells, max_budget=budget)

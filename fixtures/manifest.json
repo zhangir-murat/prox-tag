@@ -1,0 +1,112 @@
+[
+ {
+  "file": "examples/mstag_00001_0000009692.png",
+  "mode": "mstag",
+  "prefix": 1,
+  "code": 9692,
+  "expect": "decode"
+ },
+ {
+  "file": "examples/mstag_00000_0000000000.png",
+  "mode": "mstag",
+  "prefix": 0,
+  "code": 0,
+  "expect": "decode"
+ },
+ {
+  "file": "examples/mstag_65535_4294967295.png",
+  "mode": "mstag",
+  "prefix": 65535,
+  "code": 4294967295,
+  "expect": "decode"
+ },
+ {
+  "file": "examples/mstag_12345_1234567890.png",
+  "mode": "mstag",
+  "prefix": 12345,
+  "code": 1234567890,
+  "expect": "decode"
+ },
+ {
+  "file": "examples/exp1_X001_0000000042.png",
+  "mode": "exp1",
+  "prefix": 1,
+  "code": 42,
+  "expect": "decode"
+ },
+ {
+  "file": "examples/exp1_X200_3000000000.png",
+  "mode": "exp1",
+  "prefix": 200,
+  "code": 3000000000,
+  "expect": "decode"
+ },
+ {
+  "file": "distorted/rot37_persp_33125_1399756255.jpg",
+  "mode": "mstag",
+  "prefix": 33125,
+  "code": 1399756255,
+  "expect": "decode",
+  "params": {
+   "rotation": 37,
+   "perspective": 0.3
+  }
+ },
+ {
+  "file": "distorted/jpeg15_31521_4035818031.jpg",
+  "mode": "mstag",
+  "prefix": 31521,
+  "code": 4035818031,
+  "expect": "decode",
+  "params": {
+   "jpeg_quality": 15
+  }
+ },
+ {
+  "file": "distorted/blur3_noise_38315_2625655523.jpg",
+  "mode": "mstag",
+  "prefix": 38315,
+  "code": 2625655523,
+  "expect": "decode",
+  "params": {
+   "blur": 3,
+   "noise": 0.05
+  }
+ },
+ {
+  "file": "distorted/hue40_desat_19067_1202335162.jpg",
+  "mode": "mstag",
+  "prefix": 19067,
+  "code": 1202335162,
+  "expect": "decode",
+  "params": {
+   "hue_shift": 40,
+   "saturation": 0.5
+  }
+ },
+ {
+  "file": "distorted/clutter_small_65162_3493334267.jpg",
+  "mode": "mstag",
+  "prefix": 65162,
+  "code": 3493334267,
+  "expect": "decode",
+  "params": {
+   "background": "clutter",
+   "size": 0.2
+  }
+ },
+ {
+  "file": "distorted/occl4_50928_0785437962.jpg",
+  "mode": "mstag",
+  "prefix": 50928,
+  "code": 785437962,
+  "expect": "decode",
+  "params": {
+   "occlusion": 0.04
+  }
+ },
+ {
+  "file": "distorted/unreadable_blur15.jpg",
+  "expect": "fail"
+ }
+]

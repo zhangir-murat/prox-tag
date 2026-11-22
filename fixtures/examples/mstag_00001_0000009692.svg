@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 481.051 470.000" width="481" height="470" shape-rendering="geometricPrecision">
+<title>00001_0000009692</title>
+<rect width="481.051" height="470.000" fill="#FFFFFF"/>
+<g transform="translate(26.000,26.000)">
+<rect width="429.051" height="418.000" fill="#000000"/>
+<rect x="0" y="18.000" width="429.051" height="11.000" fill="#FFFFFF"/>
+<rect x="0" y="89.000" width="429.051" height="11.000" fill="#FFFFFF"/>
+<rect x="0" y="160.000" width="429.051" height="11.000" fill="#FFFFFF"/>
+<rect x="0" y="231.000" width="429.051" height="11.000" fill="#FFFFFF"/>
+<rect x="0" y="302.000" width="429.051" height="11.000" fill="#FFFFFF"/>
+<rect x="0" y="373.000" width="429.051" height="11.000" fill="#FFFFFF"/>
+<polygon data-cell="0" data-symbol="3" points="24.000,29.000 93.282,29.000 58.641,89.000" fill="#00FFFF"/>
+<polygon data-cell="1" data-symbol="0" points="58.641,89.000 127.923,89.000 93.282,29.000" fill="#FFFF00"/>
+<polygon data-cell="2" data-symbol="0" points="93.282,29.000 162.564,29.000 127.923,89.000" fill="#FFFF00"/>
+<polygon data-cell="3" data-symbol="3" points="127.923,89.000 197.205,89.000 162.564,29.000" fill="#00FFFF"/>
+<polygon data-cell="4" data-symbol="1" points="162.564,29.000 231.846,29.000 197.205,89.000" fill="#FF00FF"/>
+<polygon data-cell="5" data-symbol="3" points="197.205,89.000 266.487,89.000 231.846,29.000" fill="#00FFFF"/>
+<polygon data-cell="6" data-symbol="2" points="231.846,29.000 301.128,29.000 266.487,89.000" fill="#000000"/>
+<polygon data-cell="7" data-symbol="3" points="266.487,89.000 335.769,89.000 301.128,29.000" fill="#00FFFF"/>
+<polygon data-cell="8" data-symbol="0" points="301.128,29.000 370.410,29.000 335.769,89.000" fill="#FFFF00"/>
+<polygon data-cell="9" data-symbol="2" points="335.769,89.000 405.051,89.000 370.410,29.000" fill="#000000"/>
+<polygon data-cell="10" data-symbol="0" points="24.000,100.000 93.282,100.000 58.641,160.000" fill="#FFFF00"/>
+<polygon data-cell="11" data-symbol="3" points="58.641,160.000 127.923,160.000 93.282,100.000" fill="#00FFFF"/>
+<polygon data-cell="12" data-symbol="2" points="93.282,100.000 162.564,100.000 127.923,160.000" fill="#000000"/>
+<polygon data-cell="13" data-symbol="1" points="127.923,160.000 197.205,160.000 162.564,100.000" fill="#FF00FF"/>
+<polygon data-cell="14" data-symbol="3" points="162.564,100.000 231.846,100.000 197.205,160.000" fill="#00FFFF"/>
+<polygon data-cell="15" data-symbol="2" points="197.205,160.000 266.487,160.000 231.846,100.000" fill="#000000"/>
+<polygon data-cell="16" data-symbol="1" points="231.846,100.000 301.128,100.000 266.487,160.000" fill="#FF00FF"/>
+<polygon data-cell="17" data-symbol="3" points="266.487,160.000 335.769,160.000 301.128,100.000" fill="#00FFFF"/>
+<polygon data-cell="18" data-symbol="1" points="301.128,100.000 370.410,100.000 335.769,160.000" fill="#FF00FF"/>
+<polygon data-cell="19" data-symbol="3" points="335.769,160.000 405.051,160.000 370.410,100.000" fill="#00FFFF"/>
+<polygon data-cell="20" data-symbol="3" points="24.000,171.000 93.282,171.000 58.641,231.000" fill="#00FFFF"/>
+<polygon data-cell="21" data-symbol="1" points="58.641,231.000 127.923,231.000 93.282,171.000" fill="#FF00FF"/>
+<polygon data-cell="22" data-symbol="3" points="93.282,171.000 162.564,171.000 127.923,231.000" fill="#00FFFF"/>
+<polygon data-cell="23" data-symbol="0" points="127.923,231.000 197.205,231.000 162.564,171.000" fill="#FFFF00"/>
+<polygon data-cell="24" data-symbol="1" points="162.564,171.000 231.846,171.000 197.205,231.000" fill="#FF00FF"/>
+<polygon data-cell="25" data-symbol="2" points="197.205,231.000 266.487,231.000 231.846,171.000" fill="#000000"/>
+<polygon data-cell="26" data-symbol="0" points="231.846,171.000 301.128,171.000 266.487,231.000" fill="#FFFF00"/>
+<polygon data-cell="27" data-symbol="1" points="266.487,231.000 335.769,231.000 301.128,171.000" fill="#FF00FF"/>
+<polygon data-cell="28" data-symbol="0" points="301.128,171.000 370.410,171.000 335.769,231.000" fill="#FFFF00"/>
+<polygon data-cell="29" data-symbol="0" points="335.769,231.000 405.051,231.000 370.410,171.000" fill="#FFFF00"/>
+<polygon data-cell="30" data-symbol="0" points="24.000,242.000 93.282,242.000 58.641,302.000" fill="#FFFF00"/>
+<polygon data-cell="31" data-symbol="3" points="58.641,302.000 127.923,302.000 93.282,242.000" fill="#00FFFF"/>
+<polygon data-cell="32" data-symbol="3" points="93.282,242.000 162.564,242.000 127.923,302.000" fill="#00FFFF"/>
+<polygon data-cell="33" data-symbol="2" points="127.923,302.000 197.205,302.000 162.564,242.000" fill="#000000"/>
+<polygon data-cell="34" data-symbol="1" points="162.564,242.000 231.846,242.000 197.205,302.000" fill="#FF00FF"/>
+<polygon data-cell="35" data-symbol="0" points="197.205,302.000 266.487,302.000 231.846,242.000" fill="#FFFF00"/>
+<polygon data-cell="36" data-symbol="0" points="231.846,242.000 301.128,242.000 266.487,302.000" fill="#FFFF00"/>
+<polygon data-cell="37" data-symbol="1" points="266.487,302.000 335.769,302.000 301.128,242.000" fill="#FF00FF"/>
+<polygon data-cell="38" data-symbol="3" points="301.128,242.000 370.410,242.000 335.769,302.000" fill="#00FFFF"/>
+<polygon data-cell="39" data-symbol="3" points="335.769,302.000 405.051,302.000 370.410,242.000" fill="#00FFFF"/>
+<polygon data-cell="40" data-symbol="3" points="24.000,313.000 93.282,313.000 58.641,373.000" fill="#00FFFF"/>
+<polygon data-cell="41" data-symbol="0" points="58.641,373.000 127.923,373.000 93.282,313.000" fill="#FFFF00"/>
+<polygon data-cell="42" data-symbol="1" points="93.282,313.000 162.564,313.000 127.923,373.000" fill="#FF00FF"/>
+<polygon data-cell="43" data-symbol="3" points="127.923,373.000 197.205,373.000 162.564,313.000" fill="#00FFFF"/>
+<polygon data-cell="44" data-symbol="0" points="162.564,313.000 231.846,313.000 197.205,373.000" fill="#FFFF00"/>
+<polygon data-cell="45" data-symbol="1" points="197.205,373.000 266.487,373.000 231.846,313.000" fill="#FF00FF"/>
+<polygon data-cell="46" data-symbol="0" points="231.846,313.000 301.128,313.000 266.487,373.000" fill="#FFFF00"/>
+<polygon data-cell="47" data-symbol="1" points="266.487,373.000 335.769,373.000 301.128,313.000" fill="#FF00FF"/>
+<polygon data-cell="48" data-symbol="2" points="301.128,313.000 370.410,313.000 335.769,373.000" fill="#000000"/>
+<polygon data-cell="49" data-symbol="3" points="335.769,373.000 405.051,373.000 370.410,313.000" fill="#00FFFF"/>
+</g></svg>

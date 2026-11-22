@@ -40,6 +40,16 @@ CONDITIONS: dict[str, dict] = {
     "occlusion 8%": {"occlusion": 0.08, "occlusion_x": 0.3, "occlusion_y": 0.5},
     "clutter background": {"background": "clutter", "background_complexity": 0.6},
     "texture background": {"background": "texture", "background_complexity": 0.8},
+    "tiny (6% of frame)": {"size": 0.06},
+    "perspective 0.65": {"perspective": 0.65, "perspective_dir": 200},
+    "blur σ=7": {"blur": 7.0},
+    "contrast 0.2": {"contrast": 0.2},
+    "hue +120°": {"hue_shift": 120},
+    "greyscale (sat 0.05)": {"saturation": 0.05},
+    "JPEG q=5": {"jpeg_quality": 5},
+    "noise σ=0.3": {"noise": 0.3},
+    "occlusion 12%": {"occlusion": 0.12, "occlusion_x": 0.5, "occlusion_y": 0.5},
+    "occlusion 20%": {"occlusion": 0.2, "occlusion_x": 0.7, "occlusion_y": 0.3},
     "combined (rot+persp+blur+jpeg)": {"rotation": 37, "perspective": 0.25, "blur": 1.5, "jpeg_quality": 45, "noise": 0.03},
 }
 

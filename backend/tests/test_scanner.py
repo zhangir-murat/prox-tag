@@ -107,3 +107,37 @@ def test_debug_outputs_present():
 def test_garbage_bytes():
     r = detect.scan_bytes(b"not an image")
     assert not r.ok
+
+
+def test_regression_wrong_orientation_erasure_misdecode():
+    """Benchmark once produced a WRONG ID: a mirrored/rotated mis-orientation plus 6 erasures
+    (= all exp1 parity) 'decoded' garbage. Fixed by the assisted-decoding budget and the
+    calibration darkness check."""
+    from conftest import FIXTURES
+    img = cv2.imread(str(FIXTURES / "regression" / "exp1_blur2_misdecode_X239_2363493425.png"))
+    r = detect.scan_image(img, debug=False)
+    assert r.ok and r.tag_id == "X239_2363493425"
+
+
+def test_assisted_decoding_never_accepts_random_cells():
+    rng = random.Random(11)
+    hits = 0
+    for _ in range(4000):
+        filler = rng.choice([[0, 1], [3, 2]])
+        cells = [rng.randrange(4) for _ in range(44)] + filler + [0, 1, 2, 3]
+        er = rng.sample(range(44), rng.randrange(1, 5))
+        hits += codec.decode_cells(cells, erasure_cells=er).ok
+        hits += codec.decode_cells(cells, assisted=True).ok
+    assert hits == 0
+
+
+def test_adversarial_mosaics_with_valid_trailer_never_decode():
+    rng = random.Random(21)
+    claims = []
+    for i in range(300):
+        cells = [rng.randrange(4) for _ in range(44)] + rng.choice([[0, 1], [3, 2]]) + [0, 1, 2, 3]
+        img, _ = distort.apply(cells, distort.DistortParams(canvas=400, rotation=rng.uniform(0, 360), blur=rng.choice([0, 1, 2]), seed=i))
+        r = detect.scan_image(img, debug=False)
+        if r.ok:
+            claims.append(r.tag_id)
+    assert claims == []

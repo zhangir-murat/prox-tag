@@ -306,7 +306,7 @@ def _decode_with_strategies(cells: list[int], conf: np.ndarray, second: np.ndarr
         if mode is None or mode not in modes:
             continue
         # erasure decoding with the k least confident data cells
-        max_k = 2 if mode == "mstag" else 6
+        max_k = 2 if mode == "mstag" else 4
         for k in range(1, max_k + 1):
             r = codec.decode_cells(base, erasure_cells=data_order[:k], modes=modes)
             attempts += 1
@@ -319,9 +319,9 @@ def _decode_with_strategies(cells: list[int], conf: np.ndarray, second: np.ndarr
                 v = list(base)
                 for c in combo:
                     v[c] = int(second[c])
-                r = codec.decode_cells(v, modes=modes)
+                r = codec.decode_cells(v, modes=modes, assisted=True)
                 attempts += 1
-                if r.ok and (mode != "exp1" or len(r.corrected_symbols) <= 2):
+                if r.ok:
                     return r, f"chase(substituted {n} cell(s))", attempts
     return first_res, "failed", attempts
 
@@ -377,6 +377,12 @@ def scan_image(img_bgr: np.ndarray, debug: bool = True, modes: tuple[str, ...] =
             span = np.maximum(W - K, 0.08)
             raw = _sample(rgb, yoff, ysc)
             norm = np.clip((raw - K) / span, -0.2, 1.2)
+            # Orientation sanity: calibration cell 48 is black and must be the darkest of 46-49
+            # under any plausible lighting / hue shift. Rejects most wrong orientations early.
+            cal_lum = norm[CAL_POS].sum(axis=1)
+            if not (cal_lum[2] < np.min(np.delete(cal_lum, 2)) - 0.15):
+                log.append(f"candidate {ci} rot={rot*90} mirror={mirror}: calibration cell 48 is not the darkest - orientation rejected")
+                continue
             for refname in ("calibration", "ideal"):
                 if refname == "calibration":
                     refs = norm[CAL_POS]

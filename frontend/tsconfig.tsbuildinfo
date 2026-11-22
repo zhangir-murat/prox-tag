@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/api.ts","./src/codec.test.ts","./src/codec.ts","./src/main.tsx","./src/components/Bench.tsx","./src/components/Embed.tsx","./src/components/Experiment.tsx","./src/components/Format.tsx","./src/components/Generate.tsx","./src/components/Manager.tsx","./src/components/Scan.tsx","./src/components/common.tsx"],"version":"5.6.3"}
